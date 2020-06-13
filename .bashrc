@@ -26,17 +26,20 @@ fi
 # Supress the new mail alert
 unset MAILCHECK
 
+# History control
 HISTTIMEFORMAT="%d/%m/%y %T "
 
 # Sync bash histories between terminals
 #export PROMPT_COMMAND="history -a; history -n"
 
 # Expand the history size
-export HISTFILESIZE=10000
-export HISTSIZE=5000
+export HISTFILESIZE=1000000
+export HISTSIZE=500000
 
 # Don't put duplicate lines in the history and do not add lines that start with a space
 export HISTCONTROL=erasedups:ignoredups:ignorespace
+
+shopt -s histappend
 
 # Persist command history
 export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> "${HOME}/.bash_logs_$(hostname)/bash-history-$(date "+%Y-%m-%d").log"; fi'
@@ -67,6 +70,8 @@ if [ -f /home/mark/git/tools/git/hub.bash_completion.sh ]; then
 fi
 
 
+export EDITOR=/usr/bin/vim
+
 #######################################################
 # GENERAL ALIAS'S
 #######################################################
@@ -89,6 +94,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Search command line history
 #alias h="history | grep "
+
+alias grep='grep --color=auto'
+
+alias :q="exit"
 
 # lets me grep history
 function h() {
