@@ -314,6 +314,9 @@ eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
+# Setup direnv
+eval "$(direnv hook bash)"
+
 ################################################
 ## Always at the end
 ################################################
