@@ -1,2 +1,2 @@
 C-b:unix-filename-rubout
-set editing-mode vi
+#set editing-mode vi #stops ctrl+a working
