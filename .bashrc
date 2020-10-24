@@ -287,6 +287,8 @@ alias sup=support
 #alias aws-profile="source aws-profile"
 #alias aws="aws-wrapper"
 
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+
 # Terraform with AWS_PROFILE set to the dir name. This wont work for my current personal setup. This should check an overide variable first.
 alias tf='dirname=${PWD##*/} && export AWS_PROFILE="webops-$dirname" && echo "profile is $dirname" && aws-profile terraform init && aws-profile terraform'
 
@@ -304,6 +306,13 @@ eval "$(rbenv init -)"
 export PYENV_ROOT="$HOME/git/tools/pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# goenv
+export GOENV_ROOT="$HOME/git/tools/goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 ################################################
 ## Always at the end
