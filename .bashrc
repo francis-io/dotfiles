@@ -287,7 +287,10 @@ alias sup=support
 #alias aws-profile="source aws-profile"
 #alias aws="aws-wrapper"
 
-alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+#alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+
+#alias aws='docker run --rm -it -e AWS_PROFILE -v ~/.aws:/root/.aws:rw -v $(pwd):/aws:rw amazon/aws-cli $@'
+#alias aws='docker run --rm -v ~/.aws:/.aws -v "$(pwd)":"$(pwd)" -w "$(pwd)" -u 1000:1000 -e AWS_PROFILE mikesir87/aws-cli:v2 aws'
 
 # Terraform with AWS_PROFILE set to the dir name. This wont work for my current personal setup. This should check an overide variable first.
 alias tf='dirname=${PWD##*/} && export AWS_PROFILE="webops-$dirname" && echo "profile is $dirname" && aws-profile terraform init && aws-profile terraform'
@@ -320,10 +323,10 @@ eval "$(direnv hook bash)"
 ################################################
 ## Always at the end
 ################################################
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+# if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+#   eval `ssh-agent`
+#   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+# fi
+# export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
-ssh-add -l > /dev/null || ssh-add
+# ssh-add -l > /dev/null || ssh-add

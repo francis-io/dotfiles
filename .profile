@@ -1,3 +1,5 @@
+TERM=xterm-256color
+
 # Run alaises from .bashrc
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
