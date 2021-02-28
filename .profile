@@ -1,4 +1,4 @@
-TERM=xterm-256color
+TERM=xterm-256color # this is likely used in .bashrc somewhere. throws a login error is not set
 
 # Run alaises from .bashrc
 if [ -n "$BASH_VERSION" ]; then
