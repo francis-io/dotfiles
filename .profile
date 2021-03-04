@@ -1,12 +1,18 @@
 TERM=xterm-256color # this is likely used in .bashrc somewhere. throws a login error is not set
 
 # Run alaises from .bashrc
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-    fi
+# if [ -n "$BASH_VERSION" ]; then
+#     # include .bashrc if it exists
+#     if [ -f "$HOME/.bashrc" ]; then
+#         . "$HOME/.bashrc"
+#     fi
+# fi
+
+if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
 fi
+
+{% if ansible_system == "Linux" %}
 
 #xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 #xinput set-button-map 13 1 2 3
@@ -64,3 +70,5 @@ xset r rate 300 40
 # TODO hack to stop usb mouse suspending
 #echo 2 | sudo tee /sys/bus/usb/devices/*/power/autosuspend >/dev/null
 #echo on | sudo tee /sys/bus/usb/devices/*/power/level >/dev/null
+
+{% endif %}
