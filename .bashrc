@@ -1,4 +1,3 @@
-{% if ansible_system == "Linux" %}
 iatest=$(expr index "$-" i)
 
 if [ -f ~/.Xdefaults ]; then
@@ -331,7 +330,3 @@ eval "$(direnv hook bash)"
 # export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 # ssh-add -l > /dev/null || ssh-add
-
-{% elif ansible_distribution is match("Mac*") %}
-
-{% endif %}
