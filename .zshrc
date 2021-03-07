@@ -56,6 +56,9 @@ setopt IGNORE_EOF
 #   like: git comm-[tab]
 setopt complete_aliases
 
+# adds back in ctrl a and ctrl e
+bindkey -e
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
