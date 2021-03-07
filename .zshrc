@@ -1,3 +1,5 @@
+bindkey -e
+
 # History
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
@@ -55,9 +57,6 @@ setopt IGNORE_EOF
 # don't expand aliases _before_ completion has finished
 #   like: git comm-[tab]
 setopt complete_aliases
-
-# adds back in ctrl a and ctrl e
-bindkey -e
 
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
@@ -240,24 +239,9 @@ export TF_PLUGIN_CACHE_DIR=~/.tfcache/
 # ssh-add -l > /dev/null || ssh-add
 
 
-### Prompt
-# https://github.com/holman/dotfiles/blob/master/zsh/prompt.zsh
-#source ~/.prompt.zsh
+# pure prompt
+# .zshrc
+fpath+=$HOME/.zsh/pure
 
-# Find and set branch name var if in git repository.
-function git_branch_name()
-{
-  branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
-  if [[ $branch == "" ]];
-  then
-    :
-  else
-    echo '- ('$branch')'
-  fi
-}
-# Enable substitution in the prompt.
-setopt prompt_subst
-
-NEWLINE=$'\n'
-# Config for prompt. PS1 synonym.
-prompt='%2/ $(git_branch_name)${NEWLINE} > '
+autoload -U promptinit; promptinit
+prompt pure
